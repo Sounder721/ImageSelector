@@ -88,7 +88,7 @@ public class CropActivity extends BaseActivity implements View.OnClickListener{
         int color = intent.getIntExtra(ImageSelector.COLOR_BACKGROUND,Color.GREEN);
         mBind.cropView.setStrokeColor(color);
 
-        mFromCamera = intent.getBooleanExtra(ImageSelector.FROM_ACNERA,false);
+        mFromCamera = intent.getBooleanExtra(ImageSelector.FROM_CAMERA,false);
     }
     private void init(){
         mBind.btnConfirm.setOnClickListener(this);
@@ -99,6 +99,12 @@ public class CropActivity extends BaseActivity implements View.OnClickListener{
         mDialog = new ProgressDialog(this);
         mDialog.setMessage("正在处理...");
     }
+
+    /**
+     * 不是又相机临时拍摄的照片时用该方法获取bitmap，反之用下一个
+     * @param view
+     * @return
+     */
     private Bitmap convertViewToBitmap(View view){
         Bitmap bitmap = Bitmap.createBitmap(view.getWidth(),view.getHeight(), Bitmap.Config.ARGB_8888);
         view.draw(new Canvas(bitmap));
@@ -113,7 +119,9 @@ public class CropActivity extends BaseActivity implements View.OnClickListener{
         return view.getDrawingCache();
     }
 
-
+    /**
+     * 开始裁剪
+     */
     private void crop(){
         final Rect rect = mBind.cropView.getRect();
         Bitmap bitmap;

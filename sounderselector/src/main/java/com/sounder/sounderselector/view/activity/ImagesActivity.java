@@ -129,7 +129,7 @@ public class ImagesActivity extends BaseActivity implements ImagesView,OnImageCl
             }else if(requestCode == 110){
                 Intent intent = getIntent();
                 intent.setClass(this, CropActivity.class);
-                intent.putExtra(ImageSelector.FROM_ACNERA,true);
+                intent.putExtra(ImageSelector.FROM_CAMERA,true);
                 intent.putExtra(ImageSelector.DATA, mCameraPhotoName);
                 startActivityForResult(intent,ImageSelector.REQUEST_CODE);
             }
