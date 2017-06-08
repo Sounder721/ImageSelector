@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout>
+    <FrameLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:id="@+id/content_crop"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fitsSystemWindows="true"
+        tools:context="com.sounder.sounderselector.view.activity.CropActivity">
+        <FrameLayout
+            android:id="@+id/fl"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <uk.co.senab.photoview.PhotoView
+                android:fitsSystemWindows="true"
+                android:id="@+id/image"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_gravity="center"
+                android:scaleType="fitXY"/>
+        </FrameLayout>
+        <com.sounder.sounderselector.widgets.CropView
+            android:id="@+id/crop_view"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+        <ImageButton
+            android:id="@+id/btn_close"
+            android:layout_width="@dimen/btn_size"
+            android:layout_height="@dimen/btn_size"
+            android:layout_gravity="bottom|start"
+            android:background="@drawable/bg_red_round"
+            android:src="@drawable/ic_close"
+            android:layout_margin="@dimen/btn_margin"/>
+        <ImageButton
+            android:id="@+id/btn_confirm"
+            android:layout_width="@dimen/btn_size"
+            android:layout_height="@dimen/btn_size"
+            android:layout_gravity="bottom|end"
+            android:src="@drawable/ic_check"
+            android:background="@drawable/bg_green_round"
+            android:layout_margin="@dimen/btn_margin"/>
+    </FrameLayout>
+</layout>
