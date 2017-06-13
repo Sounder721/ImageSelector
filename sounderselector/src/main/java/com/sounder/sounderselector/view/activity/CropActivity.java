@@ -98,6 +98,7 @@ public class CropActivity extends BaseActivity implements View.OnClickListener{
         Glide.with(this).load(mData).into(mBind.image);
         mDialog = new ProgressDialog(this);
         mDialog.setMessage("正在处理...");
+        mBind.fl.setDrawingCacheEnabled(true);
     }
 
     /**
@@ -106,7 +107,7 @@ public class CropActivity extends BaseActivity implements View.OnClickListener{
      * @return
      */
     private Bitmap convertViewToBitmap(View view){
-        Bitmap bitmap = Bitmap.createBitmap(view.getWidth(),view.getHeight(), Bitmap.Config.ARGB_8888);
+        Bitmap bitmap = Bitmap.createBitmap(view.getWidth(),view.getHeight(), Bitmap.Config.RGB_565);
         view.draw(new Canvas(bitmap));
         return bitmap;
     }
@@ -115,7 +116,7 @@ public class CropActivity extends BaseActivity implements View.OnClickListener{
         Logger.i("FromCamera....");
         view.measure(View.MeasureSpec.makeMeasureSpec(0, View.MeasureSpec.UNSPECIFIED), View.MeasureSpec.makeMeasureSpec(0, View.MeasureSpec.UNSPECIFIED));
         view.layout(0, 0, view.getMeasuredWidth(), view.getMeasuredHeight());
-        view.buildDrawingCache();
+//        view.buildDrawingCache();
         return view.getDrawingCache();
     }
 
